@@ -1,4 +1,3 @@
-import { randomUUID } from "node:crypto"
 import { Slug } from "./value-objects/slug"
 import { Entity } from "../../core/entities/entity"
 
@@ -9,5 +8,4 @@ interface QuestionProps {
   authorId: string
 }
 
-export class Question extends Entity<QuestionProps> {
-}
+export class Question extends Entity<QuestionProps> {}
