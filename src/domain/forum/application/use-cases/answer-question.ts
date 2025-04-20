@@ -8,6 +8,10 @@ interface AnswerQuestionUseCaseInterface {
   content: string
 }
 
+interface AnswerQuestionUseCaseResponse {
+  answer: Answer
+}
+
 export class AnswerQuestionUseCase {
   constructor(private answersRepository: AnswersRepository) {}
 
@@ -23,6 +27,9 @@ export class AnswerQuestionUseCase {
     })
 
     await this.answersRepository.create(answer)
-    return answer
+
+    return {
+      answer
+    }
   }
 }
