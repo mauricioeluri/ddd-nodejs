@@ -52,7 +52,7 @@ describe('Choose Question Best Answer', () => {
       sut.execute({
         answerId: answer.id.toString(),
         authorId: 'author-2',
-      })
+      }),
     ).rejects.toBeInstanceOf(Error)
   })
 })

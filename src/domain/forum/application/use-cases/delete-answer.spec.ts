@@ -44,7 +44,7 @@ describe('Delete Answer', () => {
       sut.execute({
         answerId: 'answer-1',
         authorId: 'author-2',
-      })
+      }),
     ).rejects.toBeInstanceOf(Error)
   })
 })
