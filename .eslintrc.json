@@ -5,7 +5,8 @@
   ],
   "rules": {
     "no-useless-constructor":"off",
-    "no-extra-semi": "error"
+    "no-extra-semi": "error",
+    "no-empty": "off"
   },
   "env": {
     "vitest-globals/env": true
