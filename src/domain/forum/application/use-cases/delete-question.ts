@@ -10,7 +10,7 @@ interface DeleteQuestionUseCaseRequest {
 
 type DeleteQuestionUseCaseResponse = Either<
   ResourceNotFoundError | NotAllowedError,
-  {}
+  object
 >
 
 export class DeleteQuestionUseCase {
@@ -21,6 +21,7 @@ export class DeleteQuestionUseCase {
     questionId,
   }: DeleteQuestionUseCaseRequest): Promise<DeleteQuestionUseCaseResponse> {
     const question = await this.questionsRepository.findById(questionId)
+
     if (!question) {
       return left(new ResourceNotFoundError())
     }
