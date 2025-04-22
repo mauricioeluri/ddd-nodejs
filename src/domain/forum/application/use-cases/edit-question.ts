@@ -1,7 +1,7 @@
 import { QuestionsRepository } from '@/domain/forum/application/repositories/questions-repository'
 import { Question } from '@/domain/forum/enterprise/entities/question'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
-import { NotAllowerError } from './errors/not-allowed-error'
+import { NotAllowedError } from './errors/not-allowed-error'
 import { Either, left, right } from '@/core/either'
 
 interface EditQuestionUseCaseRequest {
@@ -12,7 +12,7 @@ interface EditQuestionUseCaseRequest {
 }
 
 type EditQuestionUseCaseResponse = Either<
-  ResourceNotFoundError | NotAllowerError,
+  ResourceNotFoundError | NotAllowedError,
   {
     question: Question
   }
@@ -33,7 +33,7 @@ export class EditQuestionUseCase {
     }
 
     if (authorId !== question.authorId.toString()) {
-      return left(new NotAllowerError())
+      return left(new NotAllowedError())
     }
 
     question.title = title

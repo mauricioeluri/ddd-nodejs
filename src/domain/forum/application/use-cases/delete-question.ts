@@ -1,6 +1,6 @@
 import { QuestionsRepository } from '@/domain/forum/application/repositories/questions-repository'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
-import { NotAllowerError } from './errors/not-allowed-error'
+import { NotAllowedError } from './errors/not-allowed-error'
 import { Either, left, right } from '@/core/either'
 
 interface DeleteQuestionUseCaseRequest {
@@ -9,7 +9,7 @@ interface DeleteQuestionUseCaseRequest {
 }
 
 type DeleteQuestionUseCaseResponse = Either<
-  ResourceNotFoundError | NotAllowerError,
+  ResourceNotFoundError | NotAllowedError,
   {}
 >
 
@@ -26,7 +26,7 @@ export class DeleteQuestionUseCase {
     }
 
     if (authorId !== question.authorId.toString()) {
-      return left(new NotAllowerError())
+      return left(new NotAllowedError())
     }
 
     await this.questionsRepository.delete(question)

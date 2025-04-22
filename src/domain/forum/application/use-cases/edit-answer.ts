@@ -1,7 +1,7 @@
 import { Answer } from '@/domain/forum/enterprise/entities/answer'
 import { AnswersRepository } from '@/domain/forum/application/repositories/answers-repository'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
-import { NotAllowerError } from './errors/not-allowed-error'
+import { NotAllowedError } from './errors/not-allowed-error'
 import { Either, left, right } from '@/core/either'
 
 interface EditAnswerUseCaseRequest {
@@ -11,7 +11,7 @@ interface EditAnswerUseCaseRequest {
 }
 
 type EditAnswerUseCaseResponse = Either<
-  ResourceNotFoundError | NotAllowerError,
+  ResourceNotFoundError | NotAllowedError,
   {
     answer: Answer
   }
@@ -31,7 +31,7 @@ export class EditAnswerUseCase {
     }
 
     if (authorId !== answer.authorId.toString()) {
-      return left(new NotAllowerError())
+      return left(new NotAllowedError())
     }
 
     answer.content = content
